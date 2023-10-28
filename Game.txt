@@ -1,3 +1,5 @@
+// TODO: Figure out how to decouple state and scene. Or remove state altogether. Possible scenes can manage their own states.
+
 // Imports
 var _GameState = import Games/Farming/Enums/GameState
 
@@ -50,43 +52,34 @@ func SetState(state)
   this._OnStateChangeTo(state)
   this._state = state
 
-func _OnStateChangeFrom(state)
+func _GetScene(state)
+  // FIXME: This feels like it could be done in a better way
   ?state = _GameState.Entrance
-    this._entranceScene.OnStateChangeFrom()
+    return this._entranceScene
   :?state = _GameState.MainHub
-    this._mainHubScene.OnStateChangeFrom()
+    return this._mainHubScene
   :?state = _GameState.Farm
-    this._farmScene.OnStateChangeFrom()
+    return this._farmScene
   :?state = _GameState.Workshop
-    this._workshopScene.OnStateChangeFrom()
+    return this._workshopScene
+  // TODO: Panic or handle null
+  return null
+
+func _OnStateChangeFrom(state)
+  var scene = this._GetScene(state)
+  scene.OnStateChangeFrom()
 
 func _OnStateChangeTo(state)
-  ?state = _GameState.Entrance
-    this._entranceScene.OnStateChangeTo()
-  :?state = _GameState.MainHub
-    this._mainHubScene.OnStateChangeTo()
-  :?state = _GameState.Farm
-    this._farmScene.OnStateChangeTo()
-  :?state = _GameState.Workshop
-    this._workshopScene.OnStateChangeTo()
+  var scene = this._GetScene(state)
+  scene.OnStateChangeTo()
 
 func Update()
-  ?_state = _GameState.None
+  ?this._state = _GameState.None
     // TODO: Make this panic or something
     >#red,GameState.None
     loc.Pause()
-  :?_state = _GameState.Entrance
-    this._entranceScene.Update()
-    this._entranceScene.Draw()
-  :?_state = _GameState.MainHub
-    this._mainHubScene.Update()
-    this._mainHubScene.Draw()
-    this._HUDComponent.Update()
-  :?_state = _GameState.Farm
-    this._farmScene.Update()
-    this._farmScene.Draw()
-    this._HUDComponent.Update()
-  :?_state = _GameState.Workshop
-    this._workshopScene.Update()
-    this._workshopScene.Draw()
-    this._HUDComponent.Update()
+  :
+    var scene = this._GetScene(this._state)
+    scene.Update()
+    scene.Draw()
+  this._HUDComponent.Update()
