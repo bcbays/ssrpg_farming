@@ -37,6 +37,23 @@ func MakePanel(x, y, w, h, color, style)
     panel.style = style
   return panel
 
+func MakeText(x, y, w, h, align, anchor, dock, content)
+  var text = ui.AddText()
+  text.x = x
+  text.y = y
+  text.w = w
+  text.h = h
+  ?align ! null
+    text.align = align
+  ?anchor ! null
+    text.anchor = anchor
+  ?anchor ! null
+    text.dock = dock
+  ?content ! null
+    text.text = content
+  return text
+
+
 func MakeCallback(fn, args)
   var callback = new Games/Farming/UI/Callback
   callback.Init(fn, args)

@@ -1,0 +1,37 @@
+var _Styles = import Games/Farming/Assets/Styles
+var _Glyphs = import Games/Farming/Assets/Glyphs
+var _Sprites = import Games/Farming/Assets/Sprites
+var _UIFactory = import Games/Farming/UI/UIFactory
+var _PlayerData = import Games/Farming/PlayerData
+
+var _HUDPanel
+var _sporesText
+var _seedsText
+
+func Init()
+  this._HUDPanel = _UIFactory.MakePanel(0, 0, screen.w, 1, null, 0)
+  this._HUDPanel.anchor = top_center
+  this._HUDPanel.dock = top_center
+
+  this._sporesText = _UIFactory.MakeText(-10, 0, 10, 1, "center", "top_center", "top_center", null)
+  this._HUDPanel.Add(this._sporesText)
+
+  this._seedsText = _UIFactory.MakeText(10, 0, 10, 1, "center", "top_center", "top_center", null)
+  this._HUDPanel.Add(this._seedsText)
+
+  Update()
+
+
+func Update()
+  this._HUDPanel.w = screen.w
+
+  var updateSporesText = _Glyphs.spore + _PlayerData.spores.ToString()
+  this._sporesText.text = updateSporesText
+  this._sporesText.w = string.Size(updateSporesText)
+
+  var updateSeedsText = _Glyphs.seed + _PlayerData.seeds.ToString()
+  this._seedsText.text = updateSeedsText
+  this._seedsText.w = string.Size(updateSeedsText)
+
+func DrawOnTop()
+  ui.root.Add(_HUDPanel)

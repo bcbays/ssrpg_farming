@@ -1,0 +1,9 @@
+var value = 0
+var capacity = 10
+
+var collection_rate = 0.01
+
+var loot_table = [
+  [0.95, "spore"]
+  [0.05, "seed"]
+]

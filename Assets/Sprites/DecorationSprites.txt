@@ -1,3 +1,50 @@
 var rock1 = ascii
-asdf
+###,_
+#_/ .`\
+/ `, \ `\
+asciiend
+
+
+var wall1 = ascii
+     ,       /
+\     \     |
+ \    /    /
+  |   `   /
+  \  /    \
+ _/ `   ,  |
+/  /    \   \
+asciiend
+
+
+// var wall1 = ascii
+//        ____,
+//      _/     \.
+//     /__   .
+//  _-`   \,
+// /  ,  `
+// asciiend
+
+var line_down = ascii
+´-.
+    `-.
+asciiend
+
+var line_up = ascii
+    .-´
+.-´
+asciiend
+
+//16x4
+var wall_bottom_left_1 = ascii
+             .-´
+       . - ´
+   .-´
+.-´
+asciiend
+
+var floor_1 = ascii
+  -           - 
+        -       
+     -         -
+ -         -    
 asciiend

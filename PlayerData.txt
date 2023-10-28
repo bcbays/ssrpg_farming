@@ -1,1 +1,10 @@
-var 
+var spores = math.BigNumber(storage.Get("key_spores", "0"))
+var seeds = math.BigNumber(storage.Get("key_spores", "0"))
+
+var collectors = []
+
+// For dev use
+func ResetAllProgress()
+  for k : storage.Keys()
+    storage.Delete(k)
+  loc.leave()

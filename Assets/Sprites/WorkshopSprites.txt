@@ -1,0 +1,55 @@
+var box = ascii
+   _______
+  /      /
+ /      /
+/______/
+asciiend
+
+var collector = ascii
+╔┬┬┬┬╗
+├░░░░┤
+├░░░░┤
+╚┼┴┴┼╝
+asciiend
+
+// var collector_0 = ascii
+// ╔┬┬┬┬╗
+// ├┼┼┼┼┤
+// ├┼┼┼┼┤
+// ╚┼┴┴┼╝
+// asciiend
+
+var collector_frame = ascii
+╔┬┬┬┬╗
+├    ┤
+├    ┤
+╚┼┴┴┼╝
+asciiend
+
+var collector_0 = ascii
+╔┬┬┬┬╗
+├░░░░┤
+├░░░░┤
+╚┼┴┴┼╝
+asciiend
+
+var collector_1 = ascii
+╔┬┬┬┬╗
+├▒▒▒▒┤
+├▒▒▒▒┤
+╚┼┴┴┼╝
+asciiend
+
+var collector_2 = ascii
+╔┬┬┬┬╗
+├▓▓▓▓┤
+├▓▓▓▓┤
+╚┼┴┴┼╝
+asciiend
+
+var collector_3 = ascii
+╔┬┬┬┬╗
+├████┤
+├████┤
+╚┼┴┴┼╝
+asciiend

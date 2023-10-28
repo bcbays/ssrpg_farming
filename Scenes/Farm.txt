@@ -42,6 +42,10 @@ func DrawIso(ox, oy, tx, ty, color, sprite)
   >`@x@,@y@,@color@,@sprite@ 
 
 func Draw()
+  for ty = 0..4
+    for tx = 0..4
+      >`@4 + 16*tx@,@5 + 4*ty@,#2e2e2e,@_Sprites.Decoration.floor_1@
+  
   // X+ = +9, +2
   // Y+ = -9, +2
 
@@ -55,3 +59,24 @@ func Draw()
   DrawIso(ox, oy - 2, 1, 2, "#FFFFFF", _Sprites.Farm.test_plant)
   DrawIso(ox, oy - 2, 3, 3, "#FFFFFF", _Sprites.Farm.test_plant)
   DrawIso(ox, oy - 2, 0, 4, "#FFFFFF", _Sprites.Farm.test_plant)
+
+  >`@screen.w - 14@,@screen.h - 7@,#2e2e2e,@_Sprites.Decoration.rock1@
+  >`@screen.w - 20@,@screen.h - 6@,#2e2e2e,@_Sprites.Decoration.rock1@
+  >`7,@screen.h - 8@,#2e2e2e,@_Sprites.Decoration.rock1@
+  >`@screen.w - 22@,7,#2e2e2e,@_Sprites.Decoration.rock1@
+  
+  >`-3,4,#2e2e2e,@_Sprites.Decoration.wall1@
+  >`10,2,#2e2e2e,@_Sprites.Decoration.wall1@
+  >`@screen.w - 8@,1,#2e2e2e,@_Sprites.Decoration.wall1@
+  >`@screen.w - 20@,-1,#2e2e2e,@_Sprites.Decoration.wall1@
+  >`@screen.w/2 - 3@,-3,#2e2e2e,@_Sprites.Decoration.wall1@
+  >`@screen.w/2 + 5@,-2,#2e2e2e,@_Sprites.Decoration.wall1@
+  >`@screen.w/2 - 18@,-2,#2e2e2e,@_Sprites.Decoration.wall1@
+
+  // >`0,6,#2e2e2e,@_Sprites.Decoration.wall_bottom_left_1@
+  // >`20,1,#2e2e2e,@_Sprites.Decoration.wall_bottom_left_1@
+
+  // >`-8,6,#2e2e2e,@_Sprites.Decoration.wall_bottom_left_1@
+  // >`10,2,#2e2e2e,@_Sprites.Decoration.wall_bottom_left_1@
+  // >`28,2,#2e2e2e,@_Sprites.Decoration.wall_bottom_left_1@
+  

@@ -1,4 +1,5 @@
 var Entrance = import Games/Farming/Assets/Sprites/EntranceSprites
 var Exit = import Games/Farming/Assets/Sprites/ExitSprites
 var Farm = import Games/Farming/Assets/Sprites/FarmSprites
-// var Decoration = import Games/Farming/Assets/Sprites/DecorationSprites
+var Decoration = import Games/Farming/Assets/Sprites/DecorationSprites
+var Workshop = import Games/Farming/Assets/Sprites/WorkshopSprites

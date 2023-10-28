@@ -3,20 +3,29 @@ var _GameState = import Games/Farming/Enums/GameState
 var initialized = false
 var _state = _GameState.None
 
-var _entranceComponent = null
-var _mainHubComponent = null
-var _farmComponent = null
+var _HUDComponent = null
+
+var _entranceScene = null
+var _mainHubScene = null
+var _farmScene = null
+var _workshopScene = null
 
 func Init()
   ?initialized
     return
   // Components
-  _entranceComponent = new Games/Farming/Scenes/Entrance
-  _entranceComponent.Init()
-  _mainHubComponent = new Games/Farming/Scenes/MainHub
-  _mainHubComponent.Init()
-  _farmComponent = new Games/Farming/Scenes/Farm
-  _farmComponent.Init()
+  _HUDComponent = import Games/Farming/Components/HUD
+  _HUDComponent.Init()
+  // Scenes
+  _entranceScene = import Games/Farming/Scenes/Entrance
+  _entranceScene.Init()
+  _mainHubScene = import Games/Farming/Scenes/MainHub
+  _mainHubScene.Init()
+  _farmScene = import Games/Farming/Scenes/Farm
+  _farmScene.Init()
+  _workshopScene = import Games/Farming/Scenes/Workshop
+  _workshopScene.Init()
+
   // Disable HUD Elements
   disable abilities
   disable banner
@@ -24,6 +33,9 @@ func Init()
   disable loadout input
   disable loadout print
   disable player
+  
+  _HUDComponent.DrawOnTop()
+
   // State
   _state = _GameState.Entrance
   initialized = true
@@ -35,35 +47,41 @@ func SetState(state)
 
 func OnStateChangeFrom(state) 
   ?state = _GameState.Entrance
-    _entranceComponent.Hide()
+    _entranceScene.Hide()
   :?state = _GameState.MainHub
-    _mainHubComponent.Hide()
+    _mainHubScene.Hide()
   :?state = _GameState.Farm
-    _farmComponent.Hide()
+    _farmScene.Hide()
+  :?state = _GameState.Workshop
+    _workshopScene.Hide()
 
 func OnStateChangeTo(state) 
   ?state = _GameState.Entrance
-    _entranceComponent.Show()
+    _entranceScene.Show()
   :?state = _GameState.MainHub
-    _mainHubComponent.Show()
+    _mainHubScene.Show()
   :?state = _GameState.Farm
-    _farmComponent.Show()
+    _farmScene.Show()
+  :?state = _GameState.Workshop
+    _workshopScene.Show()
 
 func Update()
   ?_state = _GameState.None
     // TODO: Make this panic or something
     >#red,GameState.None
     loc.Pause()
-  ?_state = _GameState.Entrance
-    _entranceComponent.Update()
-    _entranceComponent.Draw()
-    // >test
-    return
-  ?_state = _GameState.MainHub
-    _mainHubComponent.Update()
-    _mainHubComponent.Draw()
-    return
-  ?_state = _GameState.Farm
-    _farmComponent.Update()
-    _farmComponent.Draw()
-    return
+  :?_state = _GameState.Entrance
+    _entranceScene.Update()
+    _entranceScene.Draw()
+  :?_state = _GameState.MainHub
+    _mainHubScene.Update()
+    _mainHubScene.Draw()
+    _HUDComponent.Update()
+  :?_state = _GameState.Farm
+    _farmScene.Update()
+    _farmScene.Draw()
+    _HUDComponent.Update()
+  :?_state = _GameState.Workshop
+    _workshopScene.Update()
+    _workshopScene.Draw()
+    _HUDComponent.Update()

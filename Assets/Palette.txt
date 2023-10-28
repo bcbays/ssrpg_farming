@@ -1,0 +1,3 @@
+var DarkGray = "#2e2e2e"
+var MidGray = "#7f7f7f"
+var LightGray = "#a9a9a9"

@@ -1,4 +1,9 @@
 var sporeEnergy = "☼"
-var spore = "•"
+// var spore = "•"
+var spore = "☼"
+
+var seed = "σ"
 
 var stoneSeed = "σ"
+
+var collector_filter = [ " ", "░", "▒", "▓", "█" ]
