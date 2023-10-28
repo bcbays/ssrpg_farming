@@ -1,0 +1,4 @@
+var _Game = import Games/Farming/Game
+
+func SetStateFn(args)
+  _Game.SetState(args[0])

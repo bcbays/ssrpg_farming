@@ -1,17 +1,18 @@
+// Imports
 var _Styles = import Games/Farming/Assets/Styles
 var _Sprites = import Games/Farming/Assets/Sprites
 var _UIFactory = import Games/Farming/UI/UIFactory
-
 var _GameState = import Games/Farming/Enums/GameState
 var _Game = import Games/Farming/Game
 
+// Variables
+var _enterCallback = null
 var _enterButton = null
 
+// Scene Implementation
 func Init()
-  this._enterButton = _UIFactory.MakeButton(3, 3, 8, 3, null, _Styles.Invisible, _fn_Enter)
-
-func _fn_Enter()
-  _Game.SetState(_GameState.MainHub)
+  _enterCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.MainHub])
+  _enterButton = _UIFactory.MakeButton(3, 3, 8, 3, null, _Styles.Invisible, _enterCallback.Callback)
 
 func Show()
   this._enterButton.visible = true

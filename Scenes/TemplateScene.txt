@@ -8,17 +8,10 @@ var _Game = import Games/Farming/Game
 // Variables
 var _backgroundPanel = null
 
-var panLeftButton = null
-var panLeftCallback = null
-
 // Scene Implementation
 func Init()
   this._backgroundPanel = _UIFactory.MakePanel(0, 0, screen.w, screen.h, null, _Styles.Borderless)
   this._backgroundPanel.visible = false
-
-  this.panLeftCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.MainHub])
-  this.panLeftButton = _UIFactory.MakeButton(1, screen.h/2, 3, 3, "◀", null, this.panLeftCallback.Callback)
-  this._backgroundPanel.Add(panLeftButton)
 
 func Show()
   this._backgroundPanel.visible = true
@@ -30,9 +23,4 @@ func Update()
   return
 
 func Draw()
-  >`10,10,@screen.w@ @screen.h@
-  >`15,15,#2e2e2e,@_Sprites.Workshop.box@
-  >`30,15,@_Sprites.Workshop.collector_0@
-  >`37,15,@_Sprites.Workshop.collector_1@
-  >`44,15,@_Sprites.Workshop.collector_2@
-  >`51,15,@_Sprites.Workshop.collector_3@
+  >`5,5,Example Scene

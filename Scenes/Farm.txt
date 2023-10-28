@@ -1,10 +1,11 @@
+// Imports
 var _Styles = import Games/Farming/Assets/Styles
 var _Sprites = import Games/Farming/Assets/Sprites
 var _UIFactory = import Games/Farming/UI/UIFactory
 var _GameState = import Games/Farming/Enums/GameState
 var _Game = import Games/Farming/Game
 
-// Components
+// Variables
 var _backgroundPanel = null
 
 var panLeftButton = null
@@ -12,18 +13,16 @@ var panLeftCallback = null
 var panRightButton = null
 var panRightCallback = null
 
-func _SetStateFn(args)
-  _Game.SetState(args[0])
-
+// Scene Implementation
 func Init()
   this._backgroundPanel = _UIFactory.MakePanel(0, 0, screen.w, screen.h, null, _Styles.Borderless)
   this._backgroundPanel.visible = false
 
-  this.panLeftCallback = _UIFactory.MakeCallback(_SetStateFn, [_GameState.Farm])
+  this.panLeftCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.Farm])
   this.panLeftButton = _UIFactory.MakeButton(1, screen.h/2, 3, 3, "◀", null, this.panLeftCallback.Callback)
   this._backgroundPanel.Add(panLeftButton)
 
-  this.panRightCallback = _UIFactory.MakeCallback(_SetStateFn, [_GameState.MainHub])
+  this.panRightCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.MainHub])
   this.panRightButton = _UIFactory.MakeButton(screen.w - 4, screen.h/2, 3, 3, "▶", null, this.panRightCallback.Callback)
   this._backgroundPanel.Add(panRightButton)
 
@@ -36,7 +35,7 @@ func Hide()
 func Update()
   return
 
-func DrawIso(ox, oy, tx, ty, color, sprite)
+func _DrawIso(ox, oy, tx, ty, color, sprite)
   var x = ox + 7*(tx - ty)
   var y = oy - 2*(tx + ty)
   >`@x@,@y@,@color@,@sprite@ 
