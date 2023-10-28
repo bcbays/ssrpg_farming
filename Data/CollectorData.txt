@@ -1,0 +1,29 @@
+var minLevel = 0
+var maxLevel = 2
+
+var capacity = [
+  10,
+  20,
+  40
+]
+
+var collectionRate = [
+  0.010
+  0.015
+  0.020
+]
+
+var lootTable = [
+  [
+    [0.95, "spore"]
+    [0.05, "seed"]
+  ],
+  [
+    [0.95, "spore"]
+    [0.05, "seed"]
+  ],
+  [
+    [0.95, "spore"]
+    [0.05, "seed"]
+  ]
+]

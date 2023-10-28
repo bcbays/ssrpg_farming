@@ -1,9 +1,49 @@
-var value = 0
-var capacity = 10
+// Imports
+var _CollectorData = import Games/Farming/Data/CollectorData
+var _PlayerData = import Games/Farming/PlayerData
 
-var collection_rate = 0.01
+// Properties
+var _collectionRate = null
+var _lootTable = null
 
-var loot_table = [
-  [0.95, "spore"]
-  [0.05, "seed"]
-]
+var level = null
+var value = null
+var capacity = null
+
+func _SetData(level)
+  ?level >= _CollectorData.minLevel & level <= _CollectorData.maxLevel
+    this.level = level
+    this.value = 0
+
+    this.capacity = _CollectorData.capacity[level]
+    this._collectionRate = _CollectorData.collectionRate[level]
+    this._lootTable = _CollectorData.lootTable[level]
+  :
+    // TODO: Panic
+    return
+
+func Init(level)
+  this._SetData(level)
+
+func Upgrade()
+  // TODO: Possibly delete bool return value. Might not be used.
+  ?this.level < _CollectorData.maxLevel
+    this._SetData(this.level + 1)
+    return true
+  :
+    return false
+
+func Collect()
+  // TODO: Loot table implementation
+  var amount = math.FloorToInt(this.value) // Only collect whole number amounts
+  this.value = this.value - amount
+  _PlayerData.spores.Add(value)
+  return
+
+func Update()
+  this.value = this.value + this._collectionRate
+  // TODO: Replace with clamp utility function
+  ?this.value < 0
+    this.value = 0
+  :?this.value > this.capacity
+    this.value = this.capacity
