@@ -1,5 +1,7 @@
+// Imports
 var _GameState = import Games/Farming/Enums/GameState
 
+// Variables
 var initialized = false
 var _state = _GameState.None
 
@@ -10,23 +12,24 @@ var _mainHubScene = null
 var _farmScene = null
 var _workshopScene = null
 
+// Functions
 func Init()
-  ?initialized
+  ?this.initialized
     return
   
   // Components
-  _HUDComponent = import Games/Farming/Components/HUD
-  _HUDComponent.Init()
+  this._HUDComponent = import Games/Farming/Components/HUD
+  this._HUDComponent.Init()
 
   // Scenes
-  _entranceScene = import Games/Farming/Scenes/Entrance
-  _entranceScene.Init()
-  _mainHubScene = import Games/Farming/Scenes/MainHub
-  _mainHubScene.Init()
-  _farmScene = import Games/Farming/Scenes/Farm
-  _farmScene.Init()
-  _workshopScene = import Games/Farming/Scenes/Workshop
-  _workshopScene.Init()
+  this._entranceScene = import Games/Farming/Scenes/Entrance
+  this._entranceScene.Init()
+  this._mainHubScene = import Games/Farming/Scenes/MainHub
+  this._mainHubScene.Init()
+  this._farmScene = import Games/Farming/Scenes/Farm
+  this._farmScene.Init()
+  this._workshopScene = import Games/Farming/Scenes/Workshop
+  this._workshopScene.Init()
 
   // Disable HUD Elements
   disable abilities
@@ -36,36 +39,36 @@ func Init()
   disable loadout print
   disable player
   
-  _HUDComponent.DrawOnTop()
+  this._HUDComponent.DrawOnTop()
 
   // State
-  _state = _GameState.Entrance
-  initialized = true
+  this._state = _GameState.Entrance
+  this.initialized = true
 
 func SetState(state)
-  OnStateChangeFrom(_state)
-  OnStateChangeTo(state)
-  _state = state
+  this._OnStateChangeFrom(this._state)
+  this._OnStateChangeTo(state)
+  this._state = state
 
-func OnStateChangeFrom(state) 
+func _OnStateChangeFrom(state)
   ?state = _GameState.Entrance
-    _entranceScene.OnStateChangeFrom()
+    this._entranceScene.OnStateChangeFrom()
   :?state = _GameState.MainHub
-    _mainHubScene.OnStateChangeFrom()
+    this._mainHubScene.OnStateChangeFrom()
   :?state = _GameState.Farm
-    _farmScene.OnStateChangeFrom()
+    this._farmScene.OnStateChangeFrom()
   :?state = _GameState.Workshop
-    _workshopScene.OnStateChangeFrom()
+    this._workshopScene.OnStateChangeFrom()
 
-func OnStateChangeTo(state) 
+func _OnStateChangeTo(state)
   ?state = _GameState.Entrance
-    _entranceScene.OnStateChangeTo()
+    this._entranceScene.OnStateChangeTo()
   :?state = _GameState.MainHub
-    _mainHubScene.OnStateChangeTo()
+    this._mainHubScene.OnStateChangeTo()
   :?state = _GameState.Farm
-    _farmScene.OnStateChangeTo()
+    this._farmScene.OnStateChangeTo()
   :?state = _GameState.Workshop
-    _workshopScene.OnStateChangeTo()
+    this._workshopScene.OnStateChangeTo()
 
 func Update()
   ?_state = _GameState.None
@@ -73,17 +76,17 @@ func Update()
     >#red,GameState.None
     loc.Pause()
   :?_state = _GameState.Entrance
-    _entranceScene.Update()
-    _entranceScene.Draw()
+    this._entranceScene.Update()
+    this._entranceScene.Draw()
   :?_state = _GameState.MainHub
-    _mainHubScene.Update()
-    _mainHubScene.Draw()
-    _HUDComponent.Update()
+    this._mainHubScene.Update()
+    this._mainHubScene.Draw()
+    this._HUDComponent.Update()
   :?_state = _GameState.Farm
-    _farmScene.Update()
-    _farmScene.Draw()
-    _HUDComponent.Update()
+    this._farmScene.Update()
+    this._farmScene.Draw()
+    this._HUDComponent.Update()
   :?_state = _GameState.Workshop
-    _workshopScene.Update()
-    _workshopScene.Draw()
-    _HUDComponent.Update()
+    this._workshopScene.Update()
+    this._workshopScene.Draw()
+    this._HUDComponent.Update()
