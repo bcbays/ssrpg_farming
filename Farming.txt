@@ -1,0 +1,6 @@
+// This is the script that is imported to play the game
+// Can be placed in any location
+var farming = new Games/Farming/Main
+
+?string.Equals(loc.id, waterfall)
+  farming.Run()
