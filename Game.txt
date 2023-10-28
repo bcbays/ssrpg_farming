@@ -12,6 +12,7 @@ var _HUDComponent = null
 var _entranceScene = null
 var _mainHubScene = null
 var _farmScene = null
+var _outlookScene = null
 var _workshopScene = null
 
 // Functions
@@ -30,6 +31,8 @@ func Init()
   this._mainHubScene.Init()
   this._farmScene = import Games/Farming/Scenes/Farm
   this._farmScene.Init()
+  this._outlookScene = import Games/Farming/Scenes/Outlook
+  this._outlookScene.Init()
   this._workshopScene = import Games/Farming/Scenes/Workshop
   this._workshopScene.Init()
 
@@ -60,6 +63,8 @@ func _GetScene(state)
     return this._mainHubScene
   :?state = _GameState.Farm
     return this._farmScene
+  :?state = _GameState.Outlook
+    return this._outlookScene
   :?state = _GameState.Workshop
     return this._workshopScene
   // TODO: Panic or handle null

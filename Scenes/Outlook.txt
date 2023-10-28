@@ -17,7 +17,7 @@ func Init()
   this._backgroundPanel.visible = false
 
   this._panLeftCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.MainHub])
-  this._panLeftButton = _UIFactory.MakeButton(screen.w/2 - 2, screen.h - 5, 5, 3, "▼", null, this._panLeftCallback.Callback)
+  this._panLeftButton = _UIFactory.MakeButton(1, screen.h/2, 3, 3, "◀", null, this._panLeftCallback.Callback)
   this._backgroundPanel.Add(this._panLeftButton)
 
 func OnStateChangeFrom()
@@ -36,8 +36,6 @@ func Update()
   return
 
 func Draw()
-  >`10,10,@screen.w@ @screen.h@
-  >`15,15,#2e2e2e,@_Sprites.Workshop.box@
   >`30,15,@_Sprites.Workshop.collector_0@
   >`37,15,@_Sprites.Workshop.collector_1@
   >`44,15,@_Sprites.Workshop.collector_2@

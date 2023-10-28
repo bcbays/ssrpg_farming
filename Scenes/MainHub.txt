@@ -14,6 +14,8 @@ var _panLeftButton = null
 var _panLeftCallback = null
 var _panRightButton = null
 var _panRightCallback = null
+var _enterWorkshopCallback = null
+var _enterWorkshopButton = null
 
 // Scene Implementation
 func Init()
@@ -28,9 +30,13 @@ func Init()
   this._panLeftButton = _UIFactory.MakeButton(1, screen.h/2, 3, 3, "◀", null, this._panLeftCallback.Callback)
   this._backgroundPanel.Add(this._panLeftButton)
 
-  this._panRightCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.Workshop])
+  this._panRightCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.Outlook])
   this._panRightButton = _UIFactory.MakeButton(screen.w - 4, screen.h/2, 3, 3, "▶", null, this._panRightCallback.Callback)
   this._backgroundPanel.Add(this._panRightButton)
+
+  this._enterWorkshopCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.Workshop])
+  this._enterWorkshopButton = _UIFactory.MakeButton(24, 5, 10, 5, null, _Styles.Invisible, this._enterWorkshopCallback.Callback)
+  this._backgroundPanel.Add(this._enterWorkshopButton)
 
 func OnStateChangeFrom()
   this.Hide()
@@ -50,3 +56,5 @@ func Update()
 func Draw()
   >`@screen.w - 10@,1,#C0C0C0,@_Sprites.Exit.ladder_sprite@
   >`@screen.w - 21@,3,#808080,@_Sprites.Exit.sign_sprite@
+  >`23,2,#808080,@_Sprites.Workshop.workshop_sign@
+  >`21,5,#808080,@_Sprites.Workshop.workshop_door@

@@ -1,3 +1,19 @@
+// 12 x 3
+var workshop_sign = ascii
+#__________
+| Workshop |
+#‾‾‾‾‾‾‾‾‾‾
+asciiend
+
+// 16 x 5
+var workshop_door = ascii
+ `  _,----,_    
+ , /.      .\ ;`
+' ,|:      :|   
+  '||      ||.'`
+`;_|/      \|__. 
+asciiend
+
 var box = ascii
    _______
   /      /
