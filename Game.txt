@@ -5,15 +5,25 @@ var _state = _GameState.None
 
 var _entranceComponent = null
 var _mainHubComponent = null
+var _farmComponent = null
 
 func Init()
   ?initialized
     return
   // Components
-  _entranceComponent = new Games/Farming/Components/Entrance
+  _entranceComponent = new Games/Farming/Scenes/Entrance
   _entranceComponent.Init()
-  _mainHubComponent = new Games/Farming/Components/MainHub
+  _mainHubComponent = new Games/Farming/Scenes/MainHub
   _mainHubComponent.Init()
+  _farmComponent = new Games/Farming/Scenes/Farm
+  _farmComponent.Init()
+  // Disable HUD Elements
+  disable abilities
+  disable banner
+  disable hud
+  disable loadout input
+  disable loadout print
+  disable player
   // State
   _state = _GameState.Entrance
   initialized = true
@@ -28,12 +38,16 @@ func OnStateChangeFrom(state)
     _entranceComponent.Hide()
   :?state = _GameState.MainHub
     _mainHubComponent.Hide()
+  :?state = _GameState.Farm
+    _farmComponent.Hide()
 
 func OnStateChangeTo(state) 
   ?state = _GameState.Entrance
     _entranceComponent.Show()
   :?state = _GameState.MainHub
     _mainHubComponent.Show()
+  :?state = _GameState.Farm
+    _farmComponent.Show()
 
 func Update()
   ?_state = _GameState.None
@@ -48,4 +62,8 @@ func Update()
   ?_state = _GameState.MainHub
     _mainHubComponent.Update()
     _mainHubComponent.Draw()
+    return
+  ?_state = _GameState.Farm
+    _farmComponent.Update()
+    _farmComponent.Draw()
     return

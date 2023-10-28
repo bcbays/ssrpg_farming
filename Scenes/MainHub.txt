@@ -1,0 +1,47 @@
+var _Styles = import Games/Farming/Assets/Styles
+var _Sprites = import Games/Farming/Assets/Sprites
+var _UIFactory = import Games/Farming/UI/UIFactory
+var _GameState = import Games/Farming/Enums/GameState
+var _Game = import Games/Farming/Game
+
+// Components
+var _backgroundPanel = null
+
+var exitButton = null
+var exitCallback = null
+var panLeftButton = null
+var panLeftCallback = null
+var panRightButton = null
+var panRightCallback = null
+
+func _SetStateFn(args)
+  _Game.SetState(args[0])
+
+func Init()
+  this._backgroundPanel = _UIFactory.MakePanel(0, 0, screen.w, screen.h, null, _Styles.Borderless)
+  this._backgroundPanel.visible = false
+
+  this.exitCallback = _UIFactory.MakeCallback(_SetStateFn, [_GameState.Entrance])
+  this.exitButton = _UIFactory.MakeButton(screen.w - 11, 1, 6, 6, null, _Styles.Invisible, this.exitCallback.Callback)
+  this._backgroundPanel.Add(exitButton)
+
+  this.panLeftCallback = _UIFactory.MakeCallback(_SetStateFn, [_GameState.Farm])
+  this.panLeftButton = _UIFactory.MakeButton(1, screen.h/2, 3, 3, "◀", null, this.panLeftCallback.Callback)
+  this._backgroundPanel.Add(panLeftButton)
+
+  this.panRightCallback = _UIFactory.MakeCallback(_SetStateFn, [_GameState.MainHub])
+  this.panRightButton = _UIFactory.MakeButton(screen.w - 4, screen.h/2, 3, 3, "▶", null, this.panRightCallback.Callback)
+  this._backgroundPanel.Add(panRightButton)
+
+func Show()
+  this._backgroundPanel.visible = true
+
+func Hide()
+  this._backgroundPanel.visible = false
+
+func Update()
+  return
+
+func Draw()
+  >`@screen.w - 10@,1,#C0C0C0,@_Sprites.Exit.ladder_sprite@
+  >`@screen.w - 21@,3,#808080,@_Sprites.Exit.sign_sprite@

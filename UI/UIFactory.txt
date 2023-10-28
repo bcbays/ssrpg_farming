@@ -20,6 +20,7 @@ func MakeButton(x, y, w, h, text, style, onPressedFn)
   //   btn.SetDown(onDownFn)
   // ?onUpFn ! null
   //   btn.SetUp(onUpFn)
+  btn.visible = inherit
   return btn
 
 func MakePanel(x, y, w, h, color, style)
@@ -35,3 +36,8 @@ func MakePanel(x, y, w, h, color, style)
   ?style ! null
     panel.style = style
   return panel
+
+func MakeCallback(fn, args)
+  var callback = new Games/Farming/UI/Callback
+  callback.Init(fn, args)
+  return callback

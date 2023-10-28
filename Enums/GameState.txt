@@ -1,4 +1,5 @@
 var None = "GameState:None"
 var Entrance = "GameState:Entrance"
 var MainHub = "GameState:MainHub"
+var Farm = "GameState:Farm"
 var Workshop = "GameState:Workshop"

@@ -1,3 +1,9 @@
+var sign_sprite = ascii
+#________
+| Exit ▲ |
+#‾‾‾||‾‾‾
+asciiend
+
 var ladder_sprite = ascii
 .  .
 :--:
