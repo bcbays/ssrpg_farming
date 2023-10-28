@@ -1,0 +1,4 @@
+var sporeEnergy = "☼"
+var spore = "•"
+
+var stoneSeed = "σ"

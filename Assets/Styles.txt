@@ -1,0 +1,24 @@
+var Slot = ui.AddStyle("
+^#─#
+^│#│
+^#─#")
+
+var Invisible = ui.AddStyle("
+^###
+^###
+^###")
+
+var Borderless = ui.AddStyle("
+^   
+^   
+^   ")
+
+var HorizontalBars = ui.AddStyle("
+^───
+^###
+^───")
+
+var FullBox = ui.AddStyle("
+^███
+^███
+^███")

@@ -1,0 +1,9 @@
+var fn = null // callback
+var args = null // args array
+
+func Init(fn, args)
+  this.fn = fn
+  this.args = args
+
+func Callback()
+  this.fn(args)

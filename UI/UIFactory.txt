@@ -1,0 +1,37 @@
+var _Styles = import Games/Farming/Assets/Styles
+
+func MakeButton(x, y, w, h, text, style, onPressedFn)
+  var btn = ui.AddButton()
+  btn.x = x
+  btn.y = y
+  btn.w = w
+  btn.h = h
+  btn.anchor = top_left
+  btn.dock = top_left
+  ?text ! null
+    btn.text = text
+  :
+    btn.text = ""
+  ?style ! null
+    btn.style = style
+  ?onPressedFn ! null
+    btn.SetPressed(onPressedFn)
+  // ?onDownFn ! null
+  //   btn.SetDown(onDownFn)
+  // ?onUpFn ! null
+  //   btn.SetUp(onUpFn)
+  return btn
+
+func MakePanel(x, y, w, h, color, style)
+  var panel = ui.AddPanel()
+  panel.x = x
+  panel.y = y
+  panel.w = w
+  panel.h = h 
+  panel.ax = left
+  panel.dx = left
+  ?color ! null
+    panel.color = color
+  ?style ! null
+    panel.style = style
+  return panel

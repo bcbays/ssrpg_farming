@@ -1,0 +1,7 @@
+var _game = import Games/Farming/Game
+
+func Run()
+  ?!_game.initialized
+    _game.Init()
+  _game.Update()
+  // return

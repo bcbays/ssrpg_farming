@@ -1,0 +1,8 @@
+var ladder_sprite = ascii
+.  .
+:--:
+┊--┊
+|--|
+|--|
+|--|
+asciiend

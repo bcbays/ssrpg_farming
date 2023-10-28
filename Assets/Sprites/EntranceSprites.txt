@@ -1,0 +1,32 @@
+var sign_sprite = ascii
+#________
+| ▼ Farm |
+#‾‾‾||‾‾‾
+asciiend
+
+var hole_sprite = ascii
+/‾‾‾‾‾‾/
+`-----'
+asciiend
+
+var ladder_sprite = ascii
+##|--|
+##┊--┊
+asciiend
+
+// var sign_sprite = ascii
+//  _________||__
+// |         ||  |
+// |  Farm  _||_ |
+// |________\  /_|
+// #######||#\/
+// #######||
+// asciiend
+
+// var hole_sprite = ascii
+// ##,-|----|-.
+// #/  |----|  \
+// {   :----:   }
+// #\  '    '  /
+// ##`--------'
+// asciiend

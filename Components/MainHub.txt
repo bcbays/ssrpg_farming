@@ -1,0 +1,57 @@
+var _Styles = import Games/Farming/Assets/Styles
+var _Sprites = import Games/Farming/Assets/Sprites
+var _UIFactory = import Games/Farming/UI/UIFactory
+
+var _backgroundPanel = null
+
+var testbtn1 = null
+var testbtn2 = null
+var callback1 = null
+var callback2 = null
+
+func _TestCallback(args)
+  >@args[0]@
+
+func Init()
+  this._backgroundPanel = _UIFactory.MakePanel(0, 0, screen.w, screen.h, null, _Styles.Borderless)
+  this._backgroundPanel.visible = false
+
+  this.callback1 = new Games/Farming/UI/Callback
+  this.callback1.Init(_TestCallback, [1])
+  this.callback2 = new Games/Farming/UI/Callback
+  this.callback2.Init(_TestCallback, [2])
+
+  this.testbtn1 = _UIFactory.MakeButton(23, 3, 3, 3, "1", null, this.callback1.Callback)
+  this.testbtn2 = _UIFactory.MakeButton(26, 3, 3, 3, "2", null, this.callback2.Callback)
+
+func Show()
+  this._backgroundPanel.visible = true
+  return
+
+func Hide()
+  this._backgroundPanel.visible = false
+
+func Update()
+  return
+
+func DrawIso(ox, oy, tx, ty, color, sprite)
+  var x = ox + 7*(tx - ty)
+  var y = oy - 2*(tx + ty)
+  >`@x@,@y@,@color@,@sprite@ 
+
+func Draw()
+  >`@screen.w - 10@,1,#808080,@_Sprites.Exit.ladder_sprite@
+
+  // X+ = +9, +2
+  // Y+ = -9, +2
+
+  var ox = screen.w / 2 - 7
+  var oy = screen.h / 2 + 8
+
+  for ty = 0..4
+    for tx = 0..4
+      DrawIso(ox, oy, tx, ty, "#808080", _Sprites.Farm.tile)
+
+  DrawIso(ox, oy - 2, 1, 2, "#FFFFFF", _Sprites.Farm.test_plant)
+  DrawIso(ox, oy - 2, 3, 3, "#FFFFFF", _Sprites.Farm.test_plant)
+  DrawIso(ox, oy - 2, 0, 4, "#FFFFFF", _Sprites.Farm.test_plant)

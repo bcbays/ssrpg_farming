@@ -1,0 +1,20 @@
+// 7 x 3
+var tile_small = ascii
+.-´ `-.
+`-._.-´
+asciiend
+
+// 13 x 4
+var tile = ascii
+####.-´-.####
+.-´       `-.
+`-.       .-´
+####`-.-´####
+asciiend
+
+var test_plant = ascii
+######δ######
+####δ#|δ#####
+####|δ||δ####
+####\|||/####
+asciiend
