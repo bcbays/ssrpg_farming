@@ -8,29 +8,35 @@ var _Game = import Games/Farming/Game
 // Variables
 var _backgroundPanel = null
 
-var exitButton = null
-var exitCallback = null
-var panLeftButton = null
-var panLeftCallback = null
-var panRightButton = null
-var panRightCallback = null
+var _exitButton = null
+var _exitCallback = null
+var _panLeftButton = null
+var _panLeftCallback = null
+var _panRightButton = null
+var _panRightCallback = null
 
 // Scene Implementation
 func Init()
   this._backgroundPanel = _UIFactory.MakePanel(0, 0, screen.w, screen.h, null, _Styles.Borderless)
   this._backgroundPanel.visible = false
 
-  this.exitCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.Entrance])
-  this.exitButton = _UIFactory.MakeButton(screen.w - 11, 1, 6, 6, null, _Styles.Invisible, this.exitCallback.Callback)
-  this._backgroundPanel.Add(exitButton)
+  this._exitCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.Entrance])
+  this._exitButton = _UIFactory.MakeButton(screen.w - 11, 1, 6, 6, null, _Styles.Invisible, this._exitCallback.Callback)
+  this._backgroundPanel.Add(this._exitButton)
 
-  this.panLeftCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.Farm])
-  this.panLeftButton = _UIFactory.MakeButton(1, screen.h/2, 3, 3, "◀", null, this.panLeftCallback.Callback)
-  this._backgroundPanel.Add(panLeftButton)
+  this._panLeftCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.Farm])
+  this._panLeftButton = _UIFactory.MakeButton(1, screen.h/2, 3, 3, "◀", null, this._panLeftCallback.Callback)
+  this._backgroundPanel.Add(this._panLeftButton)
 
-  this.panRightCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.Workshop])
-  this.panRightButton = _UIFactory.MakeButton(screen.w - 4, screen.h/2, 3, 3, "▶", null, this.panRightCallback.Callback)
-  this._backgroundPanel.Add(panRightButton)
+  this._panRightCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.Workshop])
+  this._panRightButton = _UIFactory.MakeButton(screen.w - 4, screen.h/2, 3, 3, "▶", null, this._panRightCallback.Callback)
+  this._backgroundPanel.Add(this._panRightButton)
+
+func OnStateChangeFrom()
+  this.Hide()
+
+func OnStateChangeTo()
+  this.Show()
 
 func Show()
   this._backgroundPanel.visible = true

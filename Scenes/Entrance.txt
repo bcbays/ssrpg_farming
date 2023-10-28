@@ -11,8 +11,14 @@ var _enterButton = null
 
 // Scene Implementation
 func Init()
-  _enterCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.MainHub])
-  _enterButton = _UIFactory.MakeButton(3, 3, 8, 3, null, _Styles.Invisible, _enterCallback.Callback)
+  this._enterCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.MainHub])
+  this._enterButton = _UIFactory.MakeButton(3, 3, 8, 3, null, _Styles.Invisible, this._enterCallback.Callback)
+
+func OnStateChangeFrom()
+  this.Hide()
+
+func OnStateChangeTo()
+  this.Show()
 
 func Show()
   this._enterButton.visible = true

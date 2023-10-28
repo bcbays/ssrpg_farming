@@ -8,23 +8,29 @@ var _Game = import Games/Farming/Game
 // Variables
 var _backgroundPanel = null
 
-var panLeftButton = null
-var panLeftCallback = null
-var panRightButton = null
-var panRightCallback = null
+var _panLeftButton = null
+var _panLeftCallback = null
+var _panRightButton = null
+var _panRightCallback = null
 
 // Scene Implementation
 func Init()
   this._backgroundPanel = _UIFactory.MakePanel(0, 0, screen.w, screen.h, null, _Styles.Borderless)
   this._backgroundPanel.visible = false
 
-  this.panLeftCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.Farm])
-  this.panLeftButton = _UIFactory.MakeButton(1, screen.h/2, 3, 3, "◀", null, this.panLeftCallback.Callback)
-  this._backgroundPanel.Add(panLeftButton)
+  this._panLeftCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.Farm])
+  this._panLeftButton = _UIFactory.MakeButton(1, screen.h/2, 3, 3, "◀", null, this._panLeftCallback.Callback)
+  this._backgroundPanel.Add(this._panLeftButton)
 
-  this.panRightCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.MainHub])
-  this.panRightButton = _UIFactory.MakeButton(screen.w - 4, screen.h/2, 3, 3, "▶", null, this.panRightCallback.Callback)
-  this._backgroundPanel.Add(panRightButton)
+  this._panRightCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.MainHub])
+  this._panRightButton = _UIFactory.MakeButton(screen.w - 4, screen.h/2, 3, 3, "▶", null, this._panRightCallback.Callback)
+  this._backgroundPanel.Add(this._panRightButton)
+
+func OnStateChangeFrom()
+  this.Hide()
+
+func OnStateChangeTo()
+  this.Show()
 
 func Show()
   this._backgroundPanel.visible = true
@@ -53,11 +59,11 @@ func Draw()
 
   for ty = 0..4
     for tx = 0..4
-      DrawIso(ox, oy, tx, ty, "#808080", _Sprites.Farm.tile)
+      this._DrawIso(ox, oy, tx, ty, "#808080", _Sprites.Farm.tile)
 
-  DrawIso(ox, oy - 2, 1, 2, "#FFFFFF", _Sprites.Farm.test_plant)
-  DrawIso(ox, oy - 2, 3, 3, "#FFFFFF", _Sprites.Farm.test_plant)
-  DrawIso(ox, oy - 2, 0, 4, "#FFFFFF", _Sprites.Farm.test_plant)
+  this._DrawIso(ox, oy - 2, 1, 2, "#FFFFFF", _Sprites.Farm.test_plant)
+  this._DrawIso(ox, oy - 2, 3, 3, "#FFFFFF", _Sprites.Farm.test_plant)
+  this._DrawIso(ox, oy - 2, 0, 4, "#FFFFFF", _Sprites.Farm.test_plant)
 
   >`@screen.w - 14@,@screen.h - 7@,#2e2e2e,@_Sprites.Decoration.rock1@
   >`@screen.w - 20@,@screen.h - 6@,#2e2e2e,@_Sprites.Decoration.rock1@

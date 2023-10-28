@@ -13,9 +13,11 @@ var _workshopScene = null
 func Init()
   ?initialized
     return
+  
   // Components
   _HUDComponent = import Games/Farming/Components/HUD
   _HUDComponent.Init()
+
   // Scenes
   _entranceScene = import Games/Farming/Scenes/Entrance
   _entranceScene.Init()
@@ -47,23 +49,23 @@ func SetState(state)
 
 func OnStateChangeFrom(state) 
   ?state = _GameState.Entrance
-    _entranceScene.Hide()
+    _entranceScene.OnStateChangeFrom()
   :?state = _GameState.MainHub
-    _mainHubScene.Hide()
+    _mainHubScene.OnStateChangeFrom()
   :?state = _GameState.Farm
-    _farmScene.Hide()
+    _farmScene.OnStateChangeFrom()
   :?state = _GameState.Workshop
-    _workshopScene.Hide()
+    _workshopScene.OnStateChangeFrom()
 
 func OnStateChangeTo(state) 
   ?state = _GameState.Entrance
-    _entranceScene.Show()
+    _entranceScene.OnStateChangeTo()
   :?state = _GameState.MainHub
-    _mainHubScene.Show()
+    _mainHubScene.OnStateChangeTo()
   :?state = _GameState.Farm
-    _farmScene.Show()
+    _farmScene.OnStateChangeTo()
   :?state = _GameState.Workshop
-    _workshopScene.Show()
+    _workshopScene.OnStateChangeTo()
 
 func Update()
   ?_state = _GameState.None
