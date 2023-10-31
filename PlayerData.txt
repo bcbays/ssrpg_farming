@@ -1,22 +1,28 @@
+// Resources
 var spores = math.BigNumber(storage.Get("key_spores", "0"))
 var seeds = math.BigNumber(storage.Get("key_seeds", "0"))
 
+func SaveResources()
+  storage.Set("key_spores", this.spores.ToString())
+  storage.Set("key_seeds", this.seeds.ToString())
+
+// Objects
+// TODO: Serialization and deserialization of collectors
 var collectors = []
 
 func AddCollector(level)
   var c = new Games/Farming/Objects/Collector
   c.Init(level)
-  collectors.Add(c)
+  this.collectors.Add(c)
 
+// Update Objects
+// TODO: Move this elsewhere
 func Update()
-  for c : collectors
+  for c : this.collectors
     c.Update()
 
 // Debugging
 var runOnce = true
-
->`10,10,runOnce = @runOnce@
-
 ?runOnce
   for i = 1..9
     AddCollector(0)

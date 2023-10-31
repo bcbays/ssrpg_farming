@@ -93,6 +93,10 @@ func Update()
   this._HUDComponent.Update()
   _PlayerData.Update()
 
+  // TODO: Extract save interval to config
+  ?time % 30 = 0
+    _PlayerData.SaveResources()
+
   // ?_PlayerData.collectors.Count() > 0
   //   >`1,1,@Collectors@
   //   for i = 0..(_PlayerData.collectors.Count() - 1)

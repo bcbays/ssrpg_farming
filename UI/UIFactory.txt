@@ -55,12 +55,16 @@ func MakeText(x, y, w, h, align, anchor, dock, content)
     text.text = content
   return text
 
-func MakeSprite(x, y, w, h, spriteStr)
+func MakeSprite(x, y, w, h, color, spriteStr)
   var sprite = ui.AddAnim(spriteStr)
   sprite.x = x
   sprite.y = y
   sprite.w = w
   sprite.h = h
+  sprite.color = color
+
+  sprite.visible = inherit
+
   return sprite
   
 func MakeCallback(fn, args)

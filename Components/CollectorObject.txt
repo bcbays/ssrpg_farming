@@ -30,7 +30,7 @@ func Init(collectorIndex, x, y)
   this._amountText.visible = inherit
   this._panel.Add(this._amountText)
 
-  this._sprite = _UIFactory.MakeSprite(0, 0, 6, 4, _Sprites.Collector.collector_0)
+  this._sprite = _UIFactory.MakeSprite(0, 0, 6, 4, "#808080", _Sprites.Collector.collector_0)
   this._sprite.visible = inherit
   this._panel.Add(this._sprite)
 
@@ -50,8 +50,10 @@ func Update()
   var collector = _PlayerData.collectors[this._collectorIndex]
 
   // this._amountText.text = math.FloorToInt(collector.value) + "/" + collector.capacity
-  this._amountText.text = string.Format("{0:N2}/{1}", collector.value, collector.capacity)
   // this._amountText.text = string.Format("{0:N2}", collector.value)
+
+  this._amountText.text = string.Format("{0:N2}/{1}", collector.value, collector.capacity)
+  this._amountText.text = string.Format("{0:N0}/{1}", collector.value, collector.capacity)
 
   // this._levelText.text = "Lvl " + collector.level
 

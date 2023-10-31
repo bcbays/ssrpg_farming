@@ -14,10 +14,24 @@ var _panLeftCallback = null
 
 var _collectorComponents = []
 
+var _backgroundSprites = []
+
 // Scene Implementation
 func Init()
   this._backgroundPanel = _UIFactory.MakePanel(0, 0, screen.w, screen.h, null, _Styles.Borderless)
   this._backgroundPanel.visible = false
+
+  this._backgroundSprites.Add(_UIFactory.MakeSprite(10, 1, 41, 8, "#2e2e2e", _Sprites.Decoration.wall2))
+  this._backgroundSprites.Add(_UIFactory.MakeSprite(0, 2, 14, 7, "#2e2e2e", _Sprites.Decoration.wall1))
+  this._backgroundSprites.Add(_UIFactory.MakeSprite(50, 1, 14, 7, "#2e2e2e", _Sprites.Decoration.wall1))
+  this._backgroundSprites.Add(_UIFactory.MakeSprite(screen.w - 24, 2, 24, 13, "#2e2e2e", _Sprites.Decoration.wall3))
+
+  for s : this._backgroundSprites
+    s.ax = left
+    s.ay = top
+    s.dx = left
+    s.dy = top
+    this._backgroundPanel.Add(s)
 
   this._panLeftCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.MainHub])
   this._panLeftButton = _UIFactory.MakeButton(1, screen.h/2, 3, 3, "◀", null, this._panLeftCallback.Callback)
@@ -30,7 +44,8 @@ func Init()
     var xi = i % 3
     var yi = i / 3
 
-    cc.Init(i, 10 + 10*xi + 2*yi, 15 - 5*yi + 1*xi)
+    // cc.Init(i, 0 + 8*xi + 9*yi, 14 - 2*yi + 2*xi)
+    cc.Init(i, 16 + 8*xi - 9*yi, 16 - 5*yi)
     this._backgroundPanel.Add(cc._panel)
     this._collectorComponents.Add(cc)
 
@@ -55,4 +70,7 @@ func Draw()
   // >`37,15,@_Sprites.Workshop.collector_1@
   // >`44,15,@_Sprites.Workshop.collector_2@
   // >`51,15,@_Sprites.Workshop.collector_3@
+  // >`10,1,#2e2e2e,@_Sprites.Decoration.wall2@
+  // >`0,2,#2e2e2e,@_Sprites.Decoration.wall1@
+  // >`50,1,#2e2e2e,@_Sprites.Decoration.wall1@
   return

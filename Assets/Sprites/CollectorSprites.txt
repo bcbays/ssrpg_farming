@@ -19,10 +19,23 @@ var collector_frame = ascii
 ╚┼┴┴┼╝
 asciiend
 
+// var collector_0 = ascii
+// ╔┬┬┬┬╗
+// ├░░░░┤
+// ├░░░░┤
+// ╚┼┴┴┼╝
+// asciiend
+
+// var collector_0 = ascii
+// .\\\\\
+// ||>>>|
+// \|<<<|
+// asciiend
+
 var collector_0 = ascii
 ╔┬┬┬┬╗
-├░░░░┤
-├░░░░┤
+├>>>>┤
+├<<<<┤
 ╚┼┴┴┼╝
 asciiend
 
