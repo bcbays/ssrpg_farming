@@ -1,6 +1,5 @@
 // Imports
 var _CollectorData = import Games/Farming/Data/CollectorData
-var _PlayerData = import Games/Farming/PlayerData
 
 // Properties
 var _collectionRate = null
@@ -20,7 +19,8 @@ func _SetData(level)
     this._lootTable = _CollectorData.lootTable[level]
   :
     // TODO: Panic
-    return
+    >c#red,AHHHHHH
+    loc.Pause()
 
 func Init(level)
   this._SetData(level)
@@ -37,11 +37,10 @@ func Collect()
   // TODO: Loot table implementation
   var amount = math.FloorToInt(this.value) // Only collect whole number amounts
   this.value = this.value - amount
-  _PlayerData.spores.Add(value)
-  return
+  return amount
 
 func Update()
-  this.value = this.value + this._collectionRate
+  this.value = this.value + (this._collectionRate / 30.0)
   // TODO: Replace with clamp utility function
   ?this.value < 0
     this.value = 0

@@ -1,4 +1,9 @@
 var _Game = import Games/Farming/Game
+var _PlayerData = import Games/Farming/PlayerData
 
 func SetStateFn(args)
   _Game.SetState(args[0])
+
+func CollectorCollect(args)
+  var amount = _PlayerData.collectors[args[0]].Collect()
+  _PlayerData.spores.Add(amount)

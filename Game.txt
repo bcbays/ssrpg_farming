@@ -2,12 +2,15 @@
 
 // Imports
 var _GameState = import Games/Farming/Enums/GameState
+var _PlayerData = import Games/Farming/PlayerData
 
 // Variables
 var initialized = false
 var _state = _GameState.None
 
 var _HUDComponent = null
+
+var _CollectorComponents = []
 
 var _entranceScene = null
 var _mainHubScene = null
@@ -88,3 +91,9 @@ func Update()
     scene.Update()
     scene.Draw()
   this._HUDComponent.Update()
+  _PlayerData.Update()
+
+  // ?_PlayerData.collectors.Count() > 0
+  //   >`1,1,@Collectors@
+  //   for i = 0..(_PlayerData.collectors.Count() - 1)
+  //     >`1,@2 + i@,@i@: @_PlayerData.collectors[i].value@

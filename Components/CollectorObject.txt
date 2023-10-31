@@ -1,0 +1,59 @@
+var _Styles = import Games/Farming/Assets/Styles
+var _Glyphs = import Games/Farming/Assets/Glyphs
+var _Sprites = import Games/Farming/Assets/Sprites
+var _UIFactory = import Games/Farming/UI/UIFactory
+var _PlayerData = import Games/Farming/PlayerData
+
+var _panel = null
+var _sprite = null
+var _levelText = null
+var _amountText = null
+
+var _collectButton = null
+var _collectCallback = null
+
+var _collectorIndex = null
+
+func Init(collectorIndex, x, y)
+  this._collectorIndex = collectorIndex
+
+  this._panel = _UIFactory.MakePanel(x, y, 8, 6, null, 0)
+  this._panel.anchor = top_center
+  this._panel.dock = top_center
+  this._panel.visible = inherit
+
+  this._levelText = _UIFactory.MakeText(0, 0, 8, 1, "center", "top_center", "top_center", null)
+  this._levelText.visible = inherit
+  this._panel.Add(this._levelText)
+
+  this._amountText = _UIFactory.MakeText(0, 5, 8, 1, "center", "top_center", "top_center", null)
+  this._amountText.visible = inherit
+  this._panel.Add(this._amountText)
+
+  this._sprite = _UIFactory.MakeSprite(0, 0, 6, 4, _Sprites.Collector.collector_0)
+  this._sprite.visible = inherit
+  this._panel.Add(this._sprite)
+
+  this._collectCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.CollectorCollect, [collectorIndex])
+  this._collectButton = _UIFactory.MakeButton(1, 1, 6, 4, null, _Styles.Invisible, this._collectCallback.Callback)
+  this._collectButton.visible = inherit
+  this._panel.Add(this._collectButton)
+
+  Update()
+
+func GetRootComponent()
+  return this._panel
+
+func Update()
+  // this._panel.w = screen.w
+
+  var collector = _PlayerData.collectors[this._collectorIndex]
+
+  // this._amountText.text = math.FloorToInt(collector.value) + "/" + collector.capacity
+  this._amountText.text = string.Format("{0:N2}/{1}", collector.value, collector.capacity)
+  // this._amountText.text = string.Format("{0:N2}", collector.value)
+
+  // this._levelText.text = "Lvl " + collector.level
+
+func DrawOnTop()
+  ui.root.Add(_panel)

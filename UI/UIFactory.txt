@@ -55,7 +55,14 @@ func MakeText(x, y, w, h, align, anchor, dock, content)
     text.text = content
   return text
 
-
+func MakeSprite(x, y, w, h, spriteStr)
+  var sprite = ui.AddAnim(spriteStr)
+  sprite.x = x
+  sprite.y = y
+  sprite.w = w
+  sprite.h = h
+  return sprite
+  
 func MakeCallback(fn, args)
   var callback = new Games/Farming/UI/Callback
   callback.Init(fn, args)

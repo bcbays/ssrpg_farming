@@ -30,6 +30,6 @@ func Update()
   return
 
 func Draw()
-  >`5,0,#808080,@_Sprites.Entrance.sign_sprite@
+  // >`5,0,#808080,@_Sprites.Entrance.sign_sprite@
   >`3,4,#808080,@_Sprites.Entrance.hole_sprite@
   >`3,3,#C0C0C0,@_Sprites.Entrance.ladder_sprite@

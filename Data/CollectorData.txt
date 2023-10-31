@@ -3,27 +3,29 @@ var maxLevel = 2
 
 var capacity = [
   10,
-  20,
-  40
+  15,
+  25,
 ]
 
+var _rateMultiplier = 2.0 // For debugging. Normally 1.0
+
 var collectionRate = [
-  0.010
-  0.015
-  0.020
+  0.050 * _rateMultiplier,
+  0.080 * _rateMultiplier,
+  0.120 * _rateMultiplier,
 ]
 
 var lootTable = [
   [
-    [0.95, "spore"]
-    [0.05, "seed"]
+    [0.99, "spore"],
+    [0.01, "seed"],
   ],
   [
-    [0.95, "spore"]
-    [0.05, "seed"]
+    [0.97, "spore"],
+    [0.03, "seed"],
   ],
   [
-    [0.95, "spore"]
-    [0.05, "seed"]
-  ]
+    [0.95, "spore"],
+    [0.05, "seed"],
+  ],
 ]

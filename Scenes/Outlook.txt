@@ -4,12 +4,15 @@ var _Sprites = import Games/Farming/Assets/Sprites
 var _UIFactory = import Games/Farming/UI/UIFactory
 var _GameState = import Games/Farming/Enums/GameState
 var _Game = import Games/Farming/Game
+var _PlayerData = import Games/Farming/PlayerData
 
 // Variables
 var _backgroundPanel = null
 
 var _panLeftButton = null
 var _panLeftCallback = null
+
+var _collectorComponents = []
 
 // Scene Implementation
 func Init()
@@ -19,6 +22,17 @@ func Init()
   this._panLeftCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.MainHub])
   this._panLeftButton = _UIFactory.MakeButton(1, screen.h/2, 3, 3, "◀", null, this._panLeftCallback.Callback)
   this._backgroundPanel.Add(this._panLeftButton)
+
+
+  for i = 0..(_PlayerData.collectors.Count() - 1)
+    var cc = new Games/Farming/Components/CollectorObject
+
+    var xi = i % 3
+    var yi = i / 3
+
+    cc.Init(i, 10 + 10*xi + 2*yi, 15 - 5*yi + 1*xi)
+    this._backgroundPanel.Add(cc._panel)
+    this._collectorComponents.Add(cc)
 
 func OnStateChangeFrom()
   this.Hide()
@@ -33,10 +47,12 @@ func Hide()
   this._backgroundPanel.visible = false
 
 func Update()
-  return
+  for cobj : this._collectorComponents
+    cobj.Update()
 
 func Draw()
-  >`30,15,@_Sprites.Workshop.collector_0@
-  >`37,15,@_Sprites.Workshop.collector_1@
-  >`44,15,@_Sprites.Workshop.collector_2@
-  >`51,15,@_Sprites.Workshop.collector_3@
+  // >`30,15,@_Sprites.Workshop.collector_0@
+  // >`37,15,@_Sprites.Workshop.collector_1@
+  // >`44,15,@_Sprites.Workshop.collector_2@
+  // >`51,15,@_Sprites.Workshop.collector_3@
+  return

@@ -1,7 +1,26 @@
 var spores = math.BigNumber(storage.Get("key_spores", "0"))
-var seeds = math.BigNumber(storage.Get("key_spores", "0"))
+var seeds = math.BigNumber(storage.Get("key_seeds", "0"))
 
 var collectors = []
+
+func AddCollector(level)
+  var c = new Games/Farming/Objects/Collector
+  c.Init(level)
+  collectors.Add(c)
+
+func Update()
+  for c : collectors
+    c.Update()
+
+// Debugging
+var runOnce = true
+
+>`10,10,runOnce = @runOnce@
+
+?runOnce
+  for i = 1..9
+    AddCollector(0)
+  runOnce = false
 
 // For dev use
 func ResetAllProgress()
