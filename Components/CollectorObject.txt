@@ -17,7 +17,7 @@ var _collectorIndex = null
 func Init(collectorIndex, x, y)
   this._collectorIndex = collectorIndex
 
-  this._panel = _UIFactory.MakePanel(x, y, 8, 6, null, 0)
+  this._panel = _UIFactory.MakePanel(x, y, 8, 6, null, _Styles.Invisible)
   this._panel.anchor = top_center
   this._panel.dock = top_center
   this._panel.visible = inherit
@@ -52,8 +52,8 @@ func Update()
   // this._amountText.text = math.FloorToInt(collector.value) + "/" + collector.capacity
   // this._amountText.text = string.Format("{0:N2}", collector.value)
 
-  this._amountText.text = string.Format("{0:N2}/{1}", collector.value, collector.capacity)
-  this._amountText.text = string.Format("{0:N0}/{1}", collector.value, collector.capacity)
+  // this._amountText.text = string.Format("{0:N2}/{1}", collector.value, collector.capacity)
+  this._amountText.text = string.Format("{0:N1}/{1}", collector.value, collector.capacity)
 
   // this._levelText.text = "Lvl " + collector.level
 
