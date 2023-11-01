@@ -17,6 +17,8 @@ var _panRightCallback = null
 var _enterWorkshopCallback = null
 var _enterWorkshopButton = null
 
+var _HUDComponent = null
+
 // Scene Implementation
 func Init()
   this._backgroundPanel = _UIFactory.MakePanel(0, 0, screen.w, screen.h, null, _Styles.Borderless)
@@ -38,6 +40,11 @@ func Init()
   this._enterWorkshopButton = _UIFactory.MakeButton(24, 5, 10, 5, null, _Styles.Invisible, this._enterWorkshopCallback.Callback)
   this._backgroundPanel.Add(this._enterWorkshopButton)
 
+  // Components
+  this._HUDComponent = new Games/Farming/Components/HUD
+  this._HUDComponent.Init()
+  this._backgroundPanel.Add(this._HUDComponent.GetRootComponent())
+
 func OnStateChangeFrom()
   this.Hide()
 
@@ -51,7 +58,7 @@ func Hide()
   this._backgroundPanel.visible = false
 
 func Update()
-  return
+  this._HUDComponent.Update()
 
 func Draw()
   >`@screen.w - 10@,1,#C0C0C0,@_Sprites.Exit.ladder_sprite@

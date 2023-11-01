@@ -11,6 +11,8 @@ var _backgroundPanel = null
 var _panRightButton = null
 var _panRightCallback = null
 
+var _HUDComponent = null
+
 // Scene Implementation
 func Init()
   this._backgroundPanel = _UIFactory.MakePanel(0, 0, screen.w, screen.h, null, _Styles.Borderless)
@@ -19,6 +21,11 @@ func Init()
   this._panRightCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.MainHub])
   this._panRightButton = _UIFactory.MakeButton(screen.w - 4, screen.h/2, 3, 3, "▶", null, this._panRightCallback.Callback)
   this._backgroundPanel.Add(this._panRightButton)
+
+  // Components
+  this._HUDComponent = new Games/Farming/Components/HUD
+  this._HUDComponent.Init()
+  this._backgroundPanel.Add(this._HUDComponent.GetRootComponent())
 
 func OnStateChangeFrom()
   this.Hide()
@@ -33,7 +40,7 @@ func Hide()
   this._backgroundPanel.visible = false
 
 func Update()
-  return
+  this._HUDComponent.Update()
 
 func _DrawIso(ox, oy, tx, ty, color, sprite)
   var x = ox + 7*(tx - ty)
@@ -59,23 +66,16 @@ func Draw()
   this._DrawIso(ox, oy - 2, 3, 3, "#FFFFFF", _Sprites.Farm.test_plant)
   this._DrawIso(ox, oy - 2, 0, 4, "#FFFFFF", _Sprites.Farm.test_plant)
 
-  >`@screen.w - 14@,@screen.h - 7@,#2e2e2e,@_Sprites.Decoration.rock1@
-  >`@screen.w - 20@,@screen.h - 6@,#2e2e2e,@_Sprites.Decoration.rock1@
-  >`7,@screen.h - 8@,#2e2e2e,@_Sprites.Decoration.rock1@
-  >`@screen.w - 22@,7,#2e2e2e,@_Sprites.Decoration.rock1@
+  // >`@screen.w - 14@,@screen.h - 7@,#2e2e2e,@_Sprites.Decoration.rock1@
+  // >`@screen.w - 20@,@screen.h - 6@,#2e2e2e,@_Sprites.Decoration.rock1@
+  // >`7,@screen.h - 8@,#2e2e2e,@_Sprites.Decoration.rock1@
+  // >`@screen.w - 22@,7,#2e2e2e,@_Sprites.Decoration.rock1@
   
-  >`-3,4,#2e2e2e,@_Sprites.Decoration.wall1@
-  >`10,2,#2e2e2e,@_Sprites.Decoration.wall1@
-  >`@screen.w - 8@,1,#2e2e2e,@_Sprites.Decoration.wall1@
-  >`@screen.w - 20@,-1,#2e2e2e,@_Sprites.Decoration.wall1@
-  >`@screen.w/2 - 3@,-3,#2e2e2e,@_Sprites.Decoration.wall1@
-  >`@screen.w/2 + 5@,-2,#2e2e2e,@_Sprites.Decoration.wall1@
-  >`@screen.w/2 - 18@,-2,#2e2e2e,@_Sprites.Decoration.wall1@
-
-  // >`0,6,#2e2e2e,@_Sprites.Decoration.wall_bottom_left_1@
-  // >`20,1,#2e2e2e,@_Sprites.Decoration.wall_bottom_left_1@
-
-  // >`-8,6,#2e2e2e,@_Sprites.Decoration.wall_bottom_left_1@
-  // >`10,2,#2e2e2e,@_Sprites.Decoration.wall_bottom_left_1@
-  // >`28,2,#2e2e2e,@_Sprites.Decoration.wall_bottom_left_1@
+  // >`-3,4,#2e2e2e,@_Sprites.Decoration.wall1@
+  // >`10,2,#2e2e2e,@_Sprites.Decoration.wall1@
+  // >`@screen.w - 8@,1,#2e2e2e,@_Sprites.Decoration.wall1@
+  // >`@screen.w - 20@,-1,#2e2e2e,@_Sprites.Decoration.wall1@
+  // >`@screen.w/2 - 3@,-3,#2e2e2e,@_Sprites.Decoration.wall1@
+  // >`@screen.w/2 + 5@,-2,#2e2e2e,@_Sprites.Decoration.wall1@
+  // >`@screen.w/2 - 18@,-2,#2e2e2e,@_Sprites.Decoration.wall1@
   

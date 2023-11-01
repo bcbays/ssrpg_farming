@@ -8,8 +8,6 @@ var _PlayerData = import Games/Farming/PlayerData
 var initialized = false
 var _state = _GameState.None
 
-var _HUDComponent = null
-
 var _CollectorComponents = []
 
 var _entranceScene = null
@@ -22,10 +20,6 @@ var _workshopScene = null
 func Init()
   ?this.initialized
     return
-  
-  // Components
-  this._HUDComponent = import Games/Farming/Components/HUD
-  this._HUDComponent.Init()
 
   // Scenes
   this._entranceScene = import Games/Farming/Scenes/Entrance
@@ -46,8 +40,6 @@ func Init()
   disable loadout input
   disable loadout print
   disable player
-  
-  this._HUDComponent.DrawOnTop()
 
   // State
   this._state = _GameState.Entrance
@@ -90,7 +82,6 @@ func Update()
     var scene = this._GetScene(this._state)
     scene.Update()
     scene.Draw()
-  this._HUDComponent.Update()
   _PlayerData.Update()
 
   // TODO: Extract save interval to config

@@ -16,6 +16,8 @@ var _collectorComponents = []
 
 var _backgroundSprites = []
 
+var _HUDComponent = null
+
 // Scene Implementation
 func Init()
   this._backgroundPanel = _UIFactory.MakePanel(0, 0, screen.w, screen.h, null, _Styles.Borderless)
@@ -48,6 +50,11 @@ func Init()
     cc.Init(i, 16 + 8*xi - 9*yi, 16 - 5*yi)
     this._backgroundPanel.Add(cc._panel)
     this._collectorComponents.Add(cc)
+  
+  // Components
+  this._HUDComponent = new Games/Farming/Components/HUD
+  this._HUDComponent.Init()
+  this._backgroundPanel.Add(this._HUDComponent.GetRootComponent())
 
 func OnStateChangeFrom()
   this.Hide()
@@ -64,6 +71,7 @@ func Hide()
 func Update()
   for cobj : this._collectorComponents
     cobj.Update()
+  this._HUDComponent.Update()
 
 func Draw()
   // >`30,15,@_Sprites.Workshop.collector_0@

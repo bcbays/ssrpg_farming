@@ -4,11 +4,15 @@ var _Sprites = import Games/Farming/Assets/Sprites
 var _UIFactory = import Games/Farming/UI/UIFactory
 var _PlayerData = import Games/Farming/PlayerData
 
+var _initialized = false
+
 var _HUDPanel
 var _sporesText
 var _seedsText
 
 func Init()
+  ?_initialized
+    return
   this._HUDPanel = _UIFactory.MakePanel(0, 0, screen.w, 1, null, 0)
   this._HUDPanel.anchor = top_center
   this._HUDPanel.dock = top_center
@@ -21,6 +25,13 @@ func Init()
 
   Update()
 
+  this._initialized = true
+
+func Show()
+  this._HUDPanel.visible = true
+
+func Hide()
+  this._HUDPanel.visible = false
 
 func Update()
   this._HUDPanel.w = screen.w
@@ -33,5 +44,5 @@ func Update()
   this._seedsText.text = updateSeedsText
   this._seedsText.w = string.Size(updateSeedsText)
 
-func DrawOnTop()
-  ui.root.Add(_HUDPanel)
+func GetRootComponent()
+  return this._HUDPanel

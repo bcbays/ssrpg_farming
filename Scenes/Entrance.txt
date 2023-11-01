@@ -12,7 +12,7 @@ var _enterButton = null
 // Scene Implementation
 func Init()
   this._enterCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.MainHub])
-  this._enterButton = _UIFactory.MakeButton(3, 3, 8, 3, null, _Styles.Invisible, this._enterCallback.Callback)
+  this._enterButton = _UIFactory.MakeButton(5, 4, 8, 3, null, _Styles.Invisible, this._enterCallback.Callback)
 
 func OnStateChangeFrom()
   this.Hide()
@@ -30,6 +30,7 @@ func Update()
   return
 
 func Draw()
-  // >`5,0,#808080,@_Sprites.Entrance.sign_sprite@
-  >`3,4,#808080,@_Sprites.Entrance.hole_sprite@
-  >`3,3,#C0C0C0,@_Sprites.Entrance.ladder_sprite@
+  // TODO: Turn these into UI Components
+  >`7,1,#808080,@_Sprites.Entrance.sign_sprite@
+  >`5,5,#808080,@_Sprites.Entrance.hole_sprite@
+  >`5,4,#C0C0C0,@_Sprites.Entrance.ladder_sprite@
