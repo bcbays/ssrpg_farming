@@ -1,0 +1,96 @@
+// 6 x 4
+var sporeling_idle = ascii
+#,¯`.
+(____)
+-(  )-
+#´  `
+%% {repeat:13}
+#,¯`.
+(____)
+-('')-
+#´  `
+asciiend
+
+// 6 x 4
+var sporeling_walking = ascii
+#,¯`.
+(____)
+-('')-
+#´  '
+%%
+#,¯`.
+(____)
+-('')-
+#'  `
+asciiend
+
+// 6 x 4, 60 frames
+var sporeling_awake = ascii
+######
+#,¯`.#
+(____)
+#(  )#
+%% {repeat:14}
+######
+#,¯`.#
+(____)
+#(  )#
+%% {repeat:15}
+######
+#,¯`.#
+(____)
+-(  )-
+%% {repeat:15}
+#,¯`.#
+(____)
+-(  )-
+#´  `
+%% {repeat:4}
+#,¯`.#
+(____)
+-('')-
+#´  `
+%% {repeat:1}
+#,¯`.#
+(____)
+-(  )-
+#´  `
+%% {repeat:4}
+#,¯`.#
+(____)
+-('')-
+#´  `
+%% {repeat:1}
+#,¯`.#
+(____)
+-(  )-
+#´  `
+%% {repeat:5}
+#,¯`.#
+(____)
+-('')-
+#´  `
+asciiend
+
+// 7 x 4
+var sporeling_vomit = ascii
+#,´¯`.
+(_____)
+`(°o°)´
+#´   `
+asciiend
+
+var sporeling_pose = ascii
+#,¯`.
+(____)
+`('')>
+#´  `
+asciiend
+
+var sporeling_big_cap = ascii
+###__
+#,´  `.
+(______)
+#-('')-
+##´  `
+asciiend
