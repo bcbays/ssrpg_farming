@@ -19,6 +19,8 @@ var _enterWorkshopButton = null
 
 var _HUDComponent = null
 
+var _sporeling = null
+
 // Scene Implementation
 func Init()
   this._backgroundPanel = _UIFactory.MakePanel(0, 0, screen.w, screen.h, null, _Styles.Borderless)
@@ -39,6 +41,12 @@ func Init()
   this._enterWorkshopCallback = _UIFactory.MakeCallback(_UIFactory.Callbacks.SetStateFn, [_GameState.Workshop])
   this._enterWorkshopButton = _UIFactory.MakeButton(24, 5, 10, 5, null, _Styles.Invisible, this._enterWorkshopCallback.Callback)
   this._backgroundPanel.Add(this._enterWorkshopButton)
+
+  this._sporeling = _UIFactory.MakeSprite(5, 5, 6, 4, "#ffffff", _Sprites.Sporeling.sporeling_idle)
+  this._sporeling.loop = true
+  // this._sporeling.duration = 300
+  this._sporeling.Play()
+  this._backgroundPanel.Add(this._sporeling)
 
   // Components
   this._HUDComponent = new Games/Farming/Components/HUD

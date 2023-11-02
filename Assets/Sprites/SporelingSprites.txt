@@ -1,10 +1,11 @@
 // 6 x 4
 var sporeling_idle = ascii
+%% {repeat:10}
 #,¯`.
 (____)
 -(  )-
 #´  `
-%% {repeat:13}
+%% {repeat:290}
 #,¯`.
 (____)
 -('')-
@@ -22,6 +23,41 @@ var sporeling_walking = ascii
 (____)
 -('')-
 #'  `
+asciiend
+
+// 6 x 4
+var sporeling_walking_2 = ascii
+#,¯`.
+(____)
+-('')-
+#´  '
+%%
+#,¯`.
+(____)
+-('')-
+#'  `
+%%
+#,¯`.
+(____)
+-('')-
+#`  '
+%%
+#,¯`.
+(____)
+-('')-
+#'  ´
+asciiend
+
+var sporeling_shovel = ascii
+#,¯`.
+(____)┬
+-('')-│
+#´  ` Ü
+%%
+#,¯`. ┬
+(____)│
+-('')´Ü
+#´  ` 
 asciiend
 
 // 6 x 4, 60 frames
@@ -85,6 +121,13 @@ var sporeling_pose = ascii
 (____)
 `('')>
 #´  `
+asciiend
+
+var sporeling_strong = ascii
+##,¯`.
+#(____)
+╘=('')=╛
+##╜  ╙
 asciiend
 
 var sporeling_big_cap = ascii

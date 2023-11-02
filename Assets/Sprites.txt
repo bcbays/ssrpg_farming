@@ -4,3 +4,4 @@ var Farm = import Games/Farming/Assets/Sprites/FarmSprites
 var Decoration = import Games/Farming/Assets/Sprites/DecorationSprites
 var Workshop = import Games/Farming/Assets/Sprites/WorkshopSprites
 var Collector = import Games/Farming/Assets/Sprites/CollectorSprites
+var Sporeling = import Games/Farming/Assets/Sprites/SporelingSprites
