@@ -2,10 +2,16 @@
 var _UIFactory = import Games/Farming/UI/UIFactory
 var _PlayerData = import Games/Farming/PlayerData
 
-// Info
->`0,@screen.h-1@,@screen.w@x@screen.h@
+// Variables
+var _initialized = false
+var _buttons = []
 
-// Reset Button
-var _resetButton = null
-?_resetButton = null
-  _resetButton = _UIFactory.MakeButton(0, screen.h - 4, 7, 3, "Reset", null, _PlayerData.ResetAllProgress)
+// Info
+?string.Equals(loc.id, waterfall)
+  >`0,@screen.h-1@,@screen.w@x@screen.h@
+
+// Buttons
+?string.Equals(loc.id, waterfall) & _initialized = false
+  this._buttons.Add(_UIFactory.MakeButton(0, screen.h - 4, 7, 3, "Reset", null, _PlayerData.ResetAllProgress))
+
+  this._initialized = true
